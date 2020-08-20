@@ -1,0 +1,40 @@
+#COMENTARIOS BIBLIOTECA
+#PATHILIB
+
+from pathlib import path
+
+PATH	wave = Path('ocean','wave.txt') #ocean/wave.txt
+
+.HOME	home = Path.home() #/Users/sa #caminho absoluto 
+
+_ABOSLUTE	wave_absolute = Path(home, "ocean", "wave.txt") #/Users/sammy/ocean/wave.txt
+
+PATH COM PATH	shark = Path(Path.home(), "ocean", "animals", Path("fish", "shark.txt")) #/Users/sammy/ocean/animals/fish/shark.txt
+
+.WAVE		wave = Path("ocean", "wave.txt")
+nome		print(wave) # /Users/sammy/ocean/wave.txt/
+sufixo		print(wave.name) #wave
+		print(wave.suffix) #txt
+
+WITH_NAME	wave = Path("ocean", "wave.txt")
+troca_nome	tides = wave.with_name("tides.txt")
+		print(wave) #ocean/wave.txt
+		print(tides) #ocean/tides.txt
+
+.PARENT		shark = Path("ocean", "animals", "fish", "shark.txt")
+busca na pasta	print(shark) #ocean/animals/fish/shark.txt
+		print(shark.parent) #ocean/animals/fish
+		print(shark.parent.parent) #faz a recursão duas vezes
+
+.GLOB		for i in Path("ocean").glob("*.txt"):
+busca *.txt    	print(i) #imprimi todos os txt na pasta ocean
+		for txt_path in Path("ocean").glob("**/*.txt"): #busca tb nas subpastas
+
+.RELATIVES_TO	shark = Path("ocean", "animals", "fish", "shark.txt")
+		below_ocean = shark.relative_to(Path("ocean"))
+		below_animals = shark.relative_to(Path("ocean", "animals"))
+		print(shark) #ocean/animals/fish/shark.txt
+		print(below_ocean) #animals/fish/shark.txt
+		print(below_animals) #fish/shark.txt
+
+	

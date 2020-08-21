@@ -1,0 +1,61 @@
+#0. modo alternativo de abertura sem a necessidade de fechar
+with open("texto.txt", "r") as arquivo: #nao precisa fechar
+r = leitura
+w = escrita
+x = escrita. Retorna erro caso arquivo ja exista
+a = escrita. Insere dados no final do arquivo
+b = modo binario
+t = modo  texto
++ = atualizar. Tanto leitura quanto escrita
+
+
+
+#1. abertura e leitura
+arquivo = open('novo.txt', 'r')
+lista = (arquivo.readlines())
+
+for i in lista:
+    print(i.strip())
+
+print(f'O arquivo tem {len(lista)} cadastros.')
+
+
+#2. escrita no final
+arquivo = open('novo.txt', 'r')
+lista = arquivo.readlines()
+
+novo = input('Digite a palavra a ser adicionada: ')
+lista.append(f'{novo}\n')
+
+arquivo = open('novo.txt', 'w')
+for i in lista:
+    arquivo.writelines(i)
+
+arquivo.close()
+
+
+#3. Verifica a existência
+palavra = input('Digite a palavra a ser buscada: ').upper()
+arquivo = open('novo.txt', 'r')
+
+cont = 0
+for i in arquivo:
+    if i.strip().upper() == palavra:
+        cont+=1;
+if cont > 0:
+    print(f'a palavra {palavra} existe {cont} na lista')
+else:
+    print(f'a palavra escolhida {palavra } ainda NAO foi cadastrada')
+
+
+#4. Deleta a palavra
+arquivo = open('novo.txt', 'r')
+lista = arquivo.readlines()
+
+palavra = input('Digite a palavra a ser buscada: ').upper()
+
+arquivo = open('novo.txt', 'w')
+for i in lista:
+    if i.strip().upper() != palavra:
+        arquivo.write(i)
+arquivo.close()

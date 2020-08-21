@@ -1,0 +1,75 @@
+#importa a biblioteca
+import mysql.connector
+
+#cria a conexao em db e o cursor em cursor 
+db = mysql.connector.connect(host='localhost', user='luis', password='12345678', database='novo', auth_plugin='mysql_native_password')
+cursor = db.cursor()
+
+#realiza a consulta (dentro de aspas e nao é cecessário finalizar com ;)
+cursor.execute('SELECT * FROM familia')
+
+#faz a busca e coloca na variavel dados
+dados = cursor.fetchall()
+
+#looping para imprimir a busca
+#no lugar do dados, podemos colocar direto o cursor.fetchall()
+
+#OBSERVAÇÕES
+1. VER MAIS DOS COMANDOS DO MYSQL NA PASTA RESUMOS
+2. A BIBLIOTECA NÃO CRIA NEM EXCLUI BANCO DE DADOS, UMAS VEZ QUE O USA PARA ACESSO.
+3. O COMMIT SÓ É USADA PARA ENVIAR SOLICITAÇÕES.
+4. O FOR É USANDO SOMENTE PARA IMPRESSÃO DE DADOS NA TELA.
+
+
+
+
+#01. CONSULTA
+import mysql.connector
+db = mysql.connector.connect(host='localhost', user='luis', password='12345678',
+                                            database='CASA', auth_plugin='mysql_native_password')
+cursor = db.cursor()
+cursor.execute('SELECT * FROM familia')
+
+for i in cursor.fetchall():
+    print(i)
+
+db.close()
+
+
+#02. INSERIR
+import mysql.connector
+db = mysql.connector.connect(host='localhost', user='luis', password='12345678',
+                                            database='CASA', auth_plugin='mysql_native_password')
+
+cursor = db.cursor()
+cursor.execute("INSERT INTO familia (nomepessoa, sexo, nascimento, residencia) VALUES ('gersinho', 'M', '1962-03-15', 'bauru')")
+
+db.commit()
+db.close()
+
+#03. REMOVER
+import mysql.connector
+db = mysql.connector.connect(host='localhost', user='luis', password='12345678',
+                                            database='CASA', auth_plugin='mysql_native_password')
+
+cursor = db.cursor()
+cursor.execute("DELETE FROM familia WHERE idpessoa= 14 ")
+
+db.commit()
+db.close()
+
+
+#04.ATUALIZAR
+import mysql.connector
+db = mysql.connector.connect(host='localhost', user='luis', password='12345678',
+                                            database='CASA', auth_plugin='mysql_native_password')
+
+cursor = db.cursor()
+cursor.execute("UPDATE familia SET nomepessoa = 'Verinha' WHERE IDPESSOA = 11")
+
+db.commit()
+db.close()
+
+
+
+
